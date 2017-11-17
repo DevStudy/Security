@@ -27,6 +27,17 @@ namespace Microsoft.AspNetCore.Builder
         /// </summary>
         public CookieSecurePolicy Secure { get; set; } = CookieSecurePolicy.None;
 
+        public CookieBuilder PersistenceCookie { get; set; } = new CookieBuilder()
+        {
+            Name = ".AspNet.Persistence",
+            Expiration = TimeSpan.FromDays(90),
+        };
+
+        /// <summary>
+        /// Checks if persistence policies should be evaluated on this request. The default is false.
+        /// </summary>
+        public Func<HttpContext, bool> CheckPersistencePolicyNeeded { get; set; }
+
         /// <summary>
         /// Called when a cookie is appended.
         /// </summary>

@@ -17,5 +17,8 @@ namespace Microsoft.AspNetCore.CookiePolicy
         public HttpContext Context { get; }
         public CookieOptions CookieOptions { get; }
         public string CookieName { get; set; }
+        public bool IsPermissionNeeded { get; internal set; }
+        public bool HasPermission { get; internal set; }
+        public bool CanPersist { get; set; }
     }
 }
